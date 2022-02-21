@@ -1,5 +1,6 @@
 package calculator;
 
+import java.util.Arrays;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -12,17 +13,20 @@ public class StringCalculator {
 
     public static int splitAndSum(final String text) {
         String calculatorText = replaceText(text);
-
         String[] splitText = split(calculatorText);
 
-        return sum(splitText);
+        return sum(stringArrayToIntArray(splitText));
     }
 
     private static String replaceText(final String text) {
-        if (text == null || text.isEmpty()) {
+        if (isEmpty(text)) {
             return EMPTY_NUMBER;
         }
         return text;
+    }
+
+    private static boolean isEmpty(String text) {
+        return text == null || text.trim().isEmpty();
     }
 
     private static String[] split(final String text) {
@@ -41,11 +45,37 @@ public class StringCalculator {
         return String.join("|", DEFAULT_DELIMITER, delimiter);
     }
 
-    private static int sum(final String[] text) {
+    private static int[] stringArrayToIntArray(final String[] splitText) {
+        return Arrays.stream(splitText)
+                .filter(StringCalculator::isValidText)
+                .map(StringCalculator::replaceText)
+                .map(Integer::parseInt)
+                .mapToInt(Integer::intValue).toArray();
+    }
+
+    private static boolean isValidText(final String text) {
+        if (!isNumber(text)) {
+            throw new RuntimeException();
+        }
+        return true;
+    }
+
+    private static boolean isNumber(final String text) {
+        return text.matches("[0-9]*");
+    }
+
+    private static int sum(final int[] text) {
         int result = 0;
-        for (String number : text) {
-            result += Integer.parseInt(number);
+        for (int number : text) {
+            checkNegative(number);
+            result += number;
         }
         return result;
+    }
+
+    private static void checkNegative(final int number) {
+        if (number < 0) {
+            throw new RuntimeException();
+        }
     }
 }
