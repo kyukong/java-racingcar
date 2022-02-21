@@ -5,6 +5,13 @@ public class StringCalculator {
         if (text == null || text.isEmpty()) {
             return 0;
         }
-        return Integer.parseInt(text);
+
+        String[] splitText = text.split(",");
+
+        int sumResult = 0;
+        for (String number : splitText) {
+            sumResult += Integer.parseInt(number);
+        }
+        return sumResult;
     }
 }

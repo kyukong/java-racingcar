@@ -25,4 +25,16 @@ public class StringCalculatorTest {
         int result = StringCalculator.splitAndSum("2");
         assertThat(result).isEqualTo(2);
     }
+
+    @Test
+    public void splitAndSum_쉼표구분자_2개() throws Exception {
+        int result = StringCalculator.splitAndSum("1,2");
+        assertThat(result).isEqualTo(3);
+    }
+
+    @Test
+    public void splitAndSum_쉼표구분자_3개() throws Exception {
+        int result = StringCalculator.splitAndSum("1,2,3");
+        assertThat(result).isEqualTo(6);
+    }
 }
