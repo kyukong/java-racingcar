@@ -6,7 +6,7 @@ public class StringCalculator {
             return 0;
         }
 
-        String[] splitText = text.split(",");
+        String[] splitText = text.split(",|:");
 
         int sumResult = 0;
         for (String number : splitText) {
