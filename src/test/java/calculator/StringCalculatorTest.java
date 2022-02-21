@@ -15,8 +15,14 @@ public class StringCalculatorTest {
     }
 
     @Test
-    public void splitAndSum_숫자하나() throws Exception {
+    public void splitAndSum_숫자하나_1() throws Exception {
         int result = StringCalculator.splitAndSum("1");
         assertThat(result).isEqualTo(1);
+    }
+
+    @Test
+    public void splitAndSum_숫자하나_2() throws Exception {
+        int result = StringCalculator.splitAndSum("2");
+        assertThat(result).isEqualTo(2);
     }
 }
