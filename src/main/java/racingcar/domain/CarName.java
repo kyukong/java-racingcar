@@ -11,6 +11,10 @@ public class CarName {
         validateName();
     }
 
+    public String getName() {
+        return name;
+    }
+
     private void validateName() {
         validateEmpty();
         validateNameLength();
