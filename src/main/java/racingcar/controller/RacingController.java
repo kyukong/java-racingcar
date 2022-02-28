@@ -7,11 +7,11 @@ import static racingcar.view.Creator.createAttempt;
 import static racingcar.view.Creator.createCars;
 import static racingcar.view.Output.*;
 
-public class RacingGame {
+public class RacingController {
 
-    private RacingGame() {}
+    private RacingController() {}
 
-    public static void play() {
+    public static void run() {
         Cars cars = registerCars();
         Attempt attempt = setUpAttempt();
 
