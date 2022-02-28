@@ -1,5 +1,6 @@
 package racingcar.view;
 
+import racingcar.domain.Attempt;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
 import racingcar.domain.Enter;
@@ -25,6 +26,16 @@ public class Creator {
         } catch (IllegalArgumentException exception) {
             printErrorMessage(exception.getMessage());
             return createCars();
+        }
+    }
+
+    public static Attempt createAttempt() {
+        try {
+            String attempt = inputAttempt(enterable);
+            return new Attempt(Integer.parseInt(attempt));
+        } catch (IllegalArgumentException exception) {
+            printErrorMessage(exception.getMessage());
+            return createAttempt();
         }
     }
 
