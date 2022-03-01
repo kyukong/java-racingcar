@@ -3,7 +3,7 @@ package racingcar.controller;
 import racingcar.domain.Attempt;
 import racingcar.domain.Cars;
 
-import static racingcar.view.Creator.*;
+import static racingcar.controller.Creator.*;
 import static racingcar.view.Output.*;
 
 public class RacingController {
