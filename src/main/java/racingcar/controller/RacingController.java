@@ -3,8 +3,7 @@ package racingcar.controller;
 import racingcar.domain.Attempt;
 import racingcar.domain.Cars;
 
-import static racingcar.view.Creator.createAttempt;
-import static racingcar.view.Creator.createCars;
+import static racingcar.view.Creator.*;
 import static racingcar.view.Output.*;
 
 public class RacingController {
@@ -15,7 +14,7 @@ public class RacingController {
         Cars cars = registerCars();
         Attempt attempt = setUpAttempt();
 
-        // TODO: 자동차들을 경주한다.
+        playRacing(cars, attempt);
 
         // TODO: 최종 우승자를 출력한다.
     }
@@ -28,5 +27,15 @@ public class RacingController {
     private static Attempt setUpAttempt() {
         printSetAttempt();
         return createAttempt();
+    }
+
+    private static void playRacing(final Cars cars, final Attempt attempt) {
+        printResultTitle();
+        RoundResult roundResult = new RoundResult();
+        for (int i = 0; i < attempt.getAttempt(); i++) {
+            cars.round(roundResult);
+            printRoundResult(roundResult);
+            printNewLine();
+        }
     }
 }

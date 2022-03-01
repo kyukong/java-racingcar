@@ -3,8 +3,6 @@ package racingcar.view;
 import racingcar.domain.Attempt;
 import racingcar.domain.Car;
 import racingcar.domain.Cars;
-import racingcar.domain.Enter;
-import racingcar.domain.Enterable;
 
 import java.util.Arrays;
 import java.util.List;
@@ -17,6 +15,7 @@ public class Creator {
 
     private static final Enterable enterable = new Enter();
 
+    // TODO: controller 로 이동
     private Creator() {}
 
     public static Cars createCars() {

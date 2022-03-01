@@ -1,5 +1,8 @@
 package racingcar.domain;
 
+import racingcar.controller.RoundResult;
+
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -8,11 +11,20 @@ import java.util.stream.Collectors;
 public class Cars {
 
     public static final int CAR_COUNT_MINIMUM = 2;
+
     private final List<Car> cars;
 
     public Cars(final List<Car> cars) {
-        this.cars = cars;
+        this.cars = new ArrayList<>(cars);
         validateCars(cars);
+    }
+
+    public void round(RoundResult roundResult) {
+        Movable movable = new Moving();
+        for (Car car : cars) {
+            car.drive(movable);
+            roundResult.setRoundResult(car.getName(), car.getPosition());
+        }
     }
 
     private void validateCars(final List<Car> cars) {
@@ -35,7 +47,7 @@ public class Cars {
         }
     }
 
-    private List<String> getCarNamesAsString(List<Car> cars) {
+    private List<String> getCarNamesAsString(final List<Car> cars) {
         return cars.stream()
                 .map(Car::getName)
                 .collect(Collectors.toList());

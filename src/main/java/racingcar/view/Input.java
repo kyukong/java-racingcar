@@ -1,7 +1,5 @@
 package racingcar.view;
 
-import racingcar.domain.Enterable;
-
 public class Input {
 
     private Input() {}

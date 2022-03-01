@@ -2,10 +2,6 @@ package racingcar.view;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.domain.Car;
-import racingcar.domain.Enterable;
-
-import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static racingcar.view.Input.*;

@@ -16,6 +16,16 @@ public class Car {
         return name.getName();
     }
 
+    public int getPosition() {
+        return position.getPosition();
+    }
+
+    public void drive(Movable movable) {
+        if (movable.isMoving()) {
+            position.forward();
+        }
+    }
+
     @Override
     public boolean equals(Object other) {
         if (this == other) return true;

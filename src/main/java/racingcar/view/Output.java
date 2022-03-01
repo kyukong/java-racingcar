@@ -1,13 +1,23 @@
 package racingcar.view;
 
+import racingcar.controller.RoundResult;
+
+import java.util.HashMap;
+
 public class Output {
 
     private static final String ERROR_PREFIX = "[ERROR] ";
+    private static final String EQUALS = " : ";
+    private static final String STEP = "-";
 
     private Output() {}
 
-    public static void printErrorMessage(String errorMessage) {
+    public static void printErrorMessage(final String errorMessage) {
         System.out.println(ERROR_PREFIX + errorMessage);
+    }
+
+    public static void printNewLine() {
+        System.out.println();
     }
 
     public static void printRegisterCars() {
@@ -16,5 +26,16 @@ public class Output {
 
     public static void printSetAttempt() {
         System.out.println("시도할 회수는 몇회인가요?");
+    }
+
+    public static void printResultTitle() {
+        System.out.println("\n실행 결과");
+    }
+
+    public static void printRoundResult(final RoundResult roundResult) {
+        HashMap<String, Integer> results = roundResult.getRoundResult();
+        for (String carName : results.keySet()) {
+            System.out.println(carName + EQUALS + STEP.repeat(results.get(carName)));
+        }
     }
 }

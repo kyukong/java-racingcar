@@ -9,6 +9,10 @@ public class Attempt {
         validateAttempt();
     }
 
+    public int getAttempt() {
+        return attempt;
+    }
+
     private void validateAttempt() {
         if (this.attempt < 0) {
             throw new IllegalArgumentException("시도 횟수는 음수를 입력할 수 없습니다.");
