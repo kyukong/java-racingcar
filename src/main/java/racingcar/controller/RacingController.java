@@ -1,7 +1,11 @@
 package racingcar.controller;
 
 import racingcar.domain.Attempt;
+import racingcar.domain.Car;
 import racingcar.domain.Cars;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 import static racingcar.controller.Creator.*;
 import static racingcar.view.Output.*;
@@ -16,7 +20,7 @@ public class RacingController {
 
         playRacing(cars, attempt);
 
-        // TODO: 최종 우승자를 출력한다.
+        selectWinners(cars);
     }
 
     private static Cars registerCars() {
@@ -37,5 +41,17 @@ public class RacingController {
             printRoundResult(roundResult);
             printNewLine();
         }
+    }
+
+    private static void selectWinners(final Cars cars) {
+        List<String> winners = getWinners(cars);
+        printWinners(winners);
+    }
+
+    private static List<String> getWinners(final Cars cars) {
+        List<Car> winners = cars.winners();
+        return winners.stream()
+                .map(Car::getName)
+                .collect(Collectors.toList());
     }
 }

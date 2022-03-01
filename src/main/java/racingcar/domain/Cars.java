@@ -3,6 +3,7 @@ package racingcar.domain;
 import racingcar.controller.RoundResult;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -19,12 +20,18 @@ public class Cars {
         validateCars(cars);
     }
 
-    public void round(RoundResult roundResult) {
+    public void round(final RoundResult roundResult) {
         Movable movable = new Moving();
         for (Car car : cars) {
             car.drive(movable);
             roundResult.setRoundResult(car.getName(), car.getPosition());
         }
+    }
+
+    public List<Car> winners() {
+        return cars.stream()
+                .filter(car -> car.getPosition() == findMaxPosition())
+                .collect(Collectors.toList());
     }
 
     private void validateCars(final List<Car> cars) {
@@ -51,5 +58,12 @@ public class Cars {
         return cars.stream()
                 .map(Car::getName)
                 .collect(Collectors.toList());
+    }
+
+    private int findMaxPosition() {
+        return cars.stream()
+                .map(Car::getPosition)
+                .max(Comparator.naturalOrder())
+                .orElse(0);
     }
 }

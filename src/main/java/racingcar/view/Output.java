@@ -1,8 +1,10 @@
 package racingcar.view;
 
 import racingcar.controller.RoundResult;
+import racingcar.domain.Car;
 
 import java.util.HashMap;
+import java.util.List;
 
 public class Output {
 
@@ -37,5 +39,9 @@ public class Output {
         for (String carName : results.keySet()) {
             System.out.println(carName + EQUALS + STEP.repeat(results.get(carName)));
         }
+    }
+
+    public static void printWinners(final List<String> winners) {
+        System.out.println(String.join(", ", winners) + "가 최종 우승했습니다.");
     }
 }
